@@ -1,27 +1,52 @@
-# 🚀 AI-Powered Quantitative Trading System (XGBoost)
+# 🚀 Institutional-Grade Quant Trading System (XGBoost)
 
-A professional-grade, modular backtesting framework that utilizes Machine Learning to generate signals and dynamic risk management to optimize portfolio performance.
+[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)](https://www.docker.com/)
+[![Machine Learning](https://img.shields.io/badge/ML-XGBoost-orange.svg)](https://xgboost.readthedocs.io/)
 
+A professional-grade, modular backtesting framework utilizing **XGBoost Machine Learning** for signal generation and **Volatility-Targeting Risk Management** for portfolio optimization.
 
+## 📊 Key Results (Post-Friction)
+> **Note:** Performance metrics below include a **15-basis point execution friction model** (Slippage + Commissions) to ensure real-world viability and institutional consistency.
 
-## 📊 Performance Architecture
-- **Model:** XGBoost Classifier (Gradient Boosted Decision Trees)
-- **Validation:** Walk-Forward Analysis (Rolling Window) to eliminate Data Leakage.
-- **Risk Management:** Volatility-Targeting Position Sizing (Risk Parity).
-- **Infrastucture:** Fully Dockerized for seamless deployment.
+* **Total Return:** 32.06%
+* **Sharpe Ratio:** 0.36
+* **Max Drawdown:** -23.18%
+* **Validation Strategy:** Walk-Forward Analysis (252-day training / 21-day testing window)
 
-## 📈 Key Results (Out-of-Sample)
-- **Total Return:** 100.97%
-- **Sharpe Ratio:** 0.80
-- **Max Drawdown:** -22.65%
+---
+
+## 🔬 Core Engineering Features
+
+### 1. **Explainable AI (XAI) with SHAP**
+Unlike traditional "Black Box" models, this system implements **SHAP (Shapley Additive Explanations)** to quantify the impact of specific technical indicators on the model's decision-making process. This provides full alpha transparency for risk committees and stakeholders.
+
+![SHAP Feature Importance](shap_feature_importance.png)
+
+### 2. **Financial Rigor & Market Friction**
+Most retail backtests produce "phantom profits" by ignoring the cost of execution. This engine models the reality of the market through:
+* **Transaction Costs:** 0.1% fixed commission per trade.
+* **Slippage:** 0.05% price impact modeling to account for market liquidity and spread.
+
+### 3. **Dynamic Risk Management**
+The engine utilizes **Volatility-Targeting Position Sizing**. By scaling capital exposure inversely to market volatility, the system maintains a constant risk budget, smoothing the equity curve and protecting capital during high-stress regimes.
+
+### 4. **Production-Ready Architecture**
+* **Containerization:** Fully Dockerized environment to ensure "write once, run anywhere" reproducibility.
+* **Reliability:** Integrated unit tests verifying drawdown logic, signal generation, and data integrity.
+* **Modular Design:** Separate layers for data ingestion, signal modeling, and backtesting execution.
+
+---
 
 ## 🛠️ Project Structure
-- `/src`: Core logic (Data fetching, ML Models, Backtest Engine).
-- `/research`: Strategy optimization and final reporting scripts.
-- `/tests`: Unit tests for financial logic validation.
-- `Dockerfile`: Containerization for production-ready environments.
-
-## 🚦 Getting Started
-1. **Clone:** `git clone https://github.com/YOUR_USERNAME/quant-trading-system.git`
-2. **Build Container:** `docker build -t quant-system .`
-3. **Run Backtest:** `docker run quant-system`
+```text
+├── src/
+│   ├── engine.py       # Backtest Engine with Friction & Risk Logic
+│   ├── models.py       # XGBoost Strategy & Walk-Forward Logic
+│   ├── data_fetcher.py # Robust Market Data Pipeline
+├── research/
+│   ├── final_report.py # Institutional Performance Analytics
+│   ├── explainability.py # SHAP XAI Visualizations
+├── tests/              # Unit Tests for logic verification
+├── Dockerfile          # Production Environment Config
+└── requirements.txt    # Dependency Management
